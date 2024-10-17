@@ -7,3 +7,4 @@ module "infra" {
   sg            = var.sg
   zone_id       = var.zone_id
 }
+
