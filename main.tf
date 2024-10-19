@@ -1,10 +1,13 @@
-module "infra" {
-  source = "git::https://github.com/abhijeet4022/terrafrom-aws-ec2.git"
+module "vpc" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-vpc.git"
 
-  for_each      = var.components
-  instance_type = each.value["instance_type"]
-  name          = each.value["name"]
-  sg            = var.sg
-  zone_id       = var.zone_id
+  for_each = var.vpc
+  cidr_block = each.value["cidr_block"]
+  subnets = each.value["subnets"]
+  vpc_name = each.key
+
+
 }
 
+
+variable "vpc" {}
