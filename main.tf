@@ -7,6 +7,7 @@ module "vpc" {
   subnets        = each.value["subnets"]
   vpc_name       = each.key
   default_vpc_id = var.default_vpc_id
+  default_vpc_cidr = var.default_vpc_cidr
 }
 
 
