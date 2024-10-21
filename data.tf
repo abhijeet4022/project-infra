@@ -4,7 +4,3 @@ data "aws_subnets" "subnets" {
 	values = [var.default_vpc_id]
   }
 }
-
-output "d" {
-  value = data.aws_subnets.subnets.id
-}
