@@ -22,6 +22,14 @@ vpc = {
   }
 }
 
+tags = {
+  Company_Name = "ABC_Tech"
+  Business_Unit = "Ecommerce"
+  Project_Name = "Roboshop"
+  Cost_Center = "ecom-rs"
+  Created_By = "terraform"
+}
+env = dev
 
 
 
