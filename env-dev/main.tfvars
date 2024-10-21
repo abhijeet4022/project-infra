@@ -29,7 +29,7 @@ tags = {
   Cost_Center = "ecom-rs"
   Created_By = "terraform"
 }
-env = dev
+env = "dev"
 
 
 
