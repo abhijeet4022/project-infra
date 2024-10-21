@@ -14,18 +14,19 @@ module "vpc" {
 }
 
 
-# Deploy the Application Load Balancer.
-module "alb" {
-  source = "https://github.com/abhijeet4022/terraform-aws-alb.git"
-
-  for_each = var.alb
-  tags     = var.tags
-  env      = var.env
-
-  internal           = each.value["internal"]
-  load_balancer_type = each.value["load_balancer_type"]
-  vpc_id             = each.value["internal"] ? local.main_vpc_id : var.default_vpc_id
-  cidr_block         = each.value["cidr_block"]
-  sg_port            = each.value["sg_port"]
-}
+# # Deploy the Application Load Balancer.
+# module "alb" {
+#   source = "https://github.com/abhijeet4022/terraform-aws-alb.git"
+#
+#   for_each = var.alb
+#   tags     = var.tags
+#   env      = var.env
+#
+#   internal           = each.value["internal"]
+#   load_balancer_type = each.value["load_balancer_type"]
+#   vpc_id             = each.value["internal"] ? local.main_vpc_id : var.default_vpc_id
+#   subnets            = each.value["internal"] ? local.app_subnets : local.public_subnets
+#   cidr_block         = each.value["cidr_block"]
+#   sg_port            = each.value["sg_port"]
+# }
 
