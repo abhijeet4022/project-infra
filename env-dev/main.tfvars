@@ -1,6 +1,9 @@
 default_vpc_id    = "vpc-058c10b399cde9466"
 default_vpc_cidr  = "172.31.0.0/16"
 default_vpc_rt_id = "rtb-04de4de8427d67968"
+env = "dev"
+
+
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -20,6 +23,8 @@ vpc = {
     }
   }
 }
+
+
 tags = {
   Company_Name  = "ABC_Tech"
   Business_Unit = "Ecommerce"
@@ -27,8 +32,22 @@ tags = {
   Cost_Center   = "ecom-rs"
   Created_By    = "terraform"
 }
-env = "dev"
 
+
+alb = {
+  internal = {
+    internal           = true
+    load_balancer_type = "application"
+    cidr_block         = ["172.31.0.0/16", "10.0.0.0/16"]
+    sg_port            = 80
+  }
+  public = {
+    internal           = false
+    load_balancer_type = "application"
+    cidr_block         = ["0.0.0.0/0"]
+    sg_port            = 80
+  }
+}
 
 
 
