@@ -16,7 +16,7 @@ module "vpc" {
 
 # Deploy the Application Load Balancer.
 module "alb" {
-  source = "https://github.com/abhijeet4022/terraform-aws-alb.git"
+  source = "git::https://github.com/abhijeet4022/terraform-aws-alb.git"
 
   for_each = var.alb
   tags     = var.tags
