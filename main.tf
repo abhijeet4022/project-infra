@@ -18,10 +18,9 @@ module "vpc" {
 module "alb" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-alb.git"
 
-  for_each = var.alb
-  tags     = var.tags
-  env      = var.env
-
+  for_each           = var.alb
+  tags               = var.tags
+  env                = var.env
   internal           = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
   vpc_id             = each.value["internal"] ? local.main_vpc_id : var.default_vpc_id
