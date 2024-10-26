@@ -6,6 +6,6 @@
 #   value = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
 # }
 
-output "subnets" {
+output "Abhijeet" {
   value = lookup(module.vpc, "main", null)
 }
