@@ -1,7 +1,7 @@
 default_vpc_id    = "vpc-058c10b399cde9466"
 default_vpc_cidr  = "172.31.0.0/16"
 default_vpc_rt_id = "rtb-04de4de8427d67968"
-env = "dev"
+env               = "dev"
 
 
 vpc = {
@@ -49,6 +49,9 @@ alb = {
   }
 }
 
+docdb = {
+  engine_family = "docdb4.0"
+}
 
 
 

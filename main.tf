@@ -29,3 +29,15 @@ module "alb" {
   sg_port            = each.value["sg_port"]
 }
 
+
+# Deploy the DocumentDB.
+module "docdb" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-docdb.git"
+
+  for_each      = var.docdb
+  env           = var.env
+  tags          = var.tags
+  db_subnets    = local.db_subnets
+  engine_family = each.value["engine_family"]
+}
+

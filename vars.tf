@@ -5,4 +5,11 @@ variable "default_vpc_rt_id" {}
 variable "tags" {}
 variable "env" {}
 
-variable "alb" {}
+variable "alb" {
+  description = "ALB module Variable"
+}
+
+
+variable "docdb" {
+  description = "DocumentDB Module Variable"
+}
