@@ -71,6 +71,8 @@ aurora = {
     backup_retention_period = 1
     preferred_backup_window = "07:00-09:00"
     skip_final_snapshot     = true
+    instance_count          = 2
+    instance_class          = "db.t3.small"
   }
 }
 
