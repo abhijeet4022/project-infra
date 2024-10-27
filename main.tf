@@ -34,12 +34,16 @@ module "vpc" {
 module "docdb" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-docdb.git"
 
-  for_each         = var.docdb
-  env              = var.env
-  tags             = var.tags
-  db_subnets       = local.db_subnets
-  app_subnets_cidr = local.app_subnets_cidr
-  engine_family    = each.value["engine_family"]
-  vpc_id           = local.main_vpc_id
+  for_each                = var.docdb
+  env                     = var.env
+  tags                    = var.tags
+  db_subnets              = local.db_subnets
+  app_subnets_cidr        = local.app_subnets_cidr
+  engine_family           = each.value["engine_family"]
+  vpc_id                  = local.main_vpc_id
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  skip_final_snapshot     = each.value["skip_final_snapshot"]
+  engine_version          = each.value["engine_version"]
 }
 
