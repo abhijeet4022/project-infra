@@ -47,5 +47,7 @@ module "docdb" {
   engine_version          = each.value["engine_version"]
   master_username         = data.aws_ssm_parameter.master_username.value
   master_password         = data.aws_ssm_parameter.master_password.value
+  instance_count          = each.value["instance_count"]
+  instance_class          = each.value["instance_class"]
 }
 
