@@ -76,6 +76,8 @@ module "aurora" {
   instance_class          = each.value["instance_class"]
 }
 
+
+# Deploy Redis Elasticache.
 module "elasticache" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-elasticache.git"
 
