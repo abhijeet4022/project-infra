@@ -52,29 +52,29 @@ module "vpc" {
 # }
 
 # Deploy the Aurora SQL DB.
-module "aurora" {
-  source = "git::https://github.com/abhijeet4022/terraform-aws-aurorasql.git"
-
-  for_each                = var.aurora
-  env                     = var.env
-  tags                    = var.tags
-  app_subnets_cidr        = local.app_subnets_cidr
-  vpc_id                  = local.main_vpc_id
-  db_subnets              = local.db_subnets
-  rds_type                = each.value["rds_type"]
-  engine_family           = each.value["engine_family"]
-  port                    = each.value["port"]
-  engine                  = each.value["engine"]
-  engine_version          = each.value["engine_version"]
-  backup_retention_period = each.value["backup_retention_period"]
-  preferred_backup_window = each.value["preferred_backup_window"]
-  database_name           = data.aws_ssm_parameter.rds_database_name.value
-  master_username         = data.aws_ssm_parameter.rds_master_username.value
-  master_password         = data.aws_ssm_parameter.rds_master_password.value
-  skip_final_snapshot     = each.value["skip_final_snapshot"]
-  instance_count          = each.value["instance_count"]
-  instance_class          = each.value["instance_class"]
-}
+# module "aurora" {
+#   source = "git::https://github.com/abhijeet4022/terraform-aws-aurorasql.git"
+#
+#   for_each                = var.aurora
+#   env                     = var.env
+#   tags                    = var.tags
+#   app_subnets_cidr        = local.app_subnets_cidr
+#   vpc_id                  = local.main_vpc_id
+#   db_subnets              = local.db_subnets
+#   rds_type                = each.value["rds_type"]
+#   engine_family           = each.value["engine_family"]
+#   port                    = each.value["port"]
+#   engine                  = each.value["engine"]
+#   engine_version          = each.value["engine_version"]
+#   backup_retention_period = each.value["backup_retention_period"]
+#   preferred_backup_window = each.value["preferred_backup_window"]
+#   database_name           = data.aws_ssm_parameter.rds_database_name.value
+#   master_username         = data.aws_ssm_parameter.rds_master_username.value
+#   master_password         = data.aws_ssm_parameter.rds_master_password.value
+#   skip_final_snapshot     = each.value["skip_final_snapshot"]
+#   instance_count          = each.value["instance_count"]
+#   instance_class          = each.value["instance_class"]
+# }
 
 
 # Deploy Redis Elasticache.
