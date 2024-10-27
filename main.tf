@@ -90,4 +90,8 @@ module "elasticache" {
   elasticache_type = each.value["elasticache_type"]
   engine_family    = each.value["engine_family"]
   port             = each.value["port"]
+  engine           = each.value["engine"]
+  node_type        = each.value["node_type"]
+  num_cache_nodes  = each.value["num_cache_nodes"]
+  engine_version   = each.value["engine_version"]
 }
