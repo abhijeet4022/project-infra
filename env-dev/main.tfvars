@@ -81,47 +81,9 @@ elasticache = {
     elasticache_type = "redis"
     engine_family    = "redis6.x"
     port             = 6379
+    engine           = "redis"
+    node_type        = "cache.t3.micro"
+    num_cache_nodes  = 1
+    engine_version   = "6.2"
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# sg      = ["sg-0243a82da6118ecb6"]
-# zone_id = "Z03000202RXSEVOPTHMK1"
-#
-# components = {
-#   frontend  = { name = "frontend", instance_type = "t3.small" }
-#   mongodb   = { name = "mongodb", instance_type = "t3.small" }
-#   catalogue = { name = "catalogue", instance_type = "t3.small" }
-#   redis     = { name = "redis", instance_type = "t3.small" }
-#   user      = { name = "user", instance_type = "t3.small" }
-#   cart      = { name = "cart", instance_type = "t3.small" }
-#   mysql     = { name = "mysql", instance_type = "t3.small" }
-#   shipping  = { name = "shipping", instance_type = "t3.small" }
-#   rabbitmq  = { name = "rabbitmq", instance_type = "t3.small" }
-#   payment   = { name = "payment", instance_type = "t3.small" }
-# }
-
-
