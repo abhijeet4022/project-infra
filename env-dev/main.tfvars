@@ -76,6 +76,13 @@ aurora = {
   }
 }
 
+elasticache = {
+  main = {
+    elasticache_type = "redis"
+    engine_family    = "redis6.x"
+    port             = 6379
+  }
+}
 
 
 

@@ -75,3 +75,17 @@ module "aurora" {
   instance_count          = each.value["instance_count"]
   instance_class          = each.value["instance_class"]
 }
+
+module "elasticache" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-elasticache.git"
+
+  for_each         = var.elasticache
+  env              = var.env
+  tags             = var.tags
+  db_subnets       = local.db_subnets
+  vpc_id           = local.main_vpc_id
+  app_subnets_cidr = local.app_subnets_cidr
+  elasticache_type = ""
+  engine_family    = ""
+  port             = ""
+}

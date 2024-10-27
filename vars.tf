@@ -16,3 +16,7 @@ variable "docdb" {
 variable "aurora" {
   description = "Aurora SQL DB configuration"
 }
+
+variable "elasticache" {
+  description = "Redis Elasticache Config"
+}
