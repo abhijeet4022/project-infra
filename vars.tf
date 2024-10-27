@@ -6,10 +6,9 @@ variable "tags" {}
 variable "env" {}
 
 variable "alb" {
-  description = "ALB module Variable"
+  description = "A configuration map for the ALB (Application Load Balancer) module, containing details such as type, subnets, security group, and CIDR blocks for allowed traffic."
 }
 
-
 variable "docdb" {
-  description = "DocumentDB Module Variable"
+  description = "A configuration map for the DocumentDB module, including settings such as engine version, VPC details, and subnet groups for deployment."
 }
