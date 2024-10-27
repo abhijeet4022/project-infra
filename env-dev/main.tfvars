@@ -63,9 +63,13 @@ docdb = {
 
 aurora = {
   main = {
-    rds_type      = "aurora-mysql"
-    engine_family = "aurora-mysql5.7"
-    port          = 3306
+    rds_type                = "aurora-mysql"
+    engine_family           = "aurora-mysql5.7"
+    port                    = 3306
+    engine                  = "aurora-mysql"
+    engine_version          = "5.7.mysql_aurora.2.11.3"
+    backup_retention_period = 1
+    preferred_backup_window = "07:00-09:00"
   }
 }
 

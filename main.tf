@@ -55,15 +55,19 @@ module "vpc" {
 module "aurora" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-aurorasql.git"
 
-  for_each         = var.aurora
-  env              = var.env
-  tags             = var.tags
-  app_subnets_cidr = local.app_subnets_cidr
-  vpc_id           = local.main_vpc_id
-  db_subnets       = local.db_subnets
-  rds_type         = each.value["rds_type"]
-  engine_family    = each.value["engine_family"]
-  port             = each.value["port"]
+  for_each                = var.aurora
+  env                     = var.env
+  tags                    = var.tags
+  app_subnets_cidr        = local.app_subnets_cidr
+  vpc_id                  = local.main_vpc_id
+  db_subnets              = local.db_subnets
+  rds_type                = each.value["rds_type"]
+  engine_family           = each.value["engine_family"]
+  port                    = each.value["port"]
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
 
 
 }
