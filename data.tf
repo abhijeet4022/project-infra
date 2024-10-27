@@ -6,12 +6,24 @@ data "aws_subnets" "subnets" {
   }
 }
 
-# Find the parameter store values
-data "aws_ssm_parameter" "master_username" {
+# Find the parameter store values for DocDB
+data "aws_ssm_parameter" "docdb_master_username" {
   name = "docdb.${var.env}.master_username"
 }
 
-data "aws_ssm_parameter" "master_password" {
+data "aws_ssm_parameter" "docdb_master_password" {
   name = "docdb.${var.env}.master_password"
 }
 
+# Find the parameters store value for Aurora MySQL
+data "aws_ssm_parameter" "rds_master_username" {
+  name = "rds.${var.env}.master_username"
+}
+
+data "aws_ssm_parameter" "rds_database_name" {
+  name = "rds.${var.env}.database_name"
+}
+
+data "aws_ssm_parameter" "rds_master_password" {
+  name = "rds.${var.env}.master_password"
+}
