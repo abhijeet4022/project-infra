@@ -71,4 +71,5 @@ module "aurora" {
   database_name           = data.aws_ssm_parameter.rds_database_name.value
   master_username         = data.aws_ssm_parameter.rds_master_username.value
   master_password         = data.aws_ssm_parameter.rds_master_password.value
+  skip_final_snapshot     = each.value["skip_final_snapshot"]
 }
