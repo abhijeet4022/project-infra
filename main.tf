@@ -85,7 +85,7 @@ module "elasticache" {
   db_subnets       = local.db_subnets
   vpc_id           = local.main_vpc_id
   app_subnets_cidr = local.app_subnets_cidr
-  elasticache_type = ""
-  engine_family    = ""
-  port             = ""
+  elasticache_type = each.value["elasticache_type"]
+  engine_family    = each.value["engine_family"]
+  port             = each.value["port"]
 }
