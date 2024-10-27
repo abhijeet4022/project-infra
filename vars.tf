@@ -12,3 +12,7 @@ variable "alb" {
 variable "docdb" {
   description = "A configuration map for the DocumentDB module, including settings such as engine version, VPC details, and subnet groups for deployment."
 }
+
+variable "aurora" {
+  description = "Aurora SQL DB configuration"
+}

@@ -31,23 +31,39 @@ module "vpc" {
 
 
 # Deploy the DocumentDB.
-module "docdb" {
-  source = "git::https://github.com/abhijeet4022/terraform-aws-docdb.git"
+# module "docdb" {
+#   source = "git::https://github.com/abhijeet4022/terraform-aws-docdb.git"
+#
+#   for_each                = var.docdb
+#   env                     = var.env
+#   tags                    = var.tags
+#   db_subnets              = local.db_subnets
+#   app_subnets_cidr        = local.app_subnets_cidr
+#   engine_family           = each.value["engine_family"]
+#   vpc_id                  = local.main_vpc_id
+#   backup_retention_period = each.value["backup_retention_period"]
+#   preferred_backup_window = each.value["preferred_backup_window"]
+#   skip_final_snapshot     = each.value["skip_final_snapshot"]
+#   engine_version          = each.value["engine_version"]
+#   master_username         = data.aws_ssm_parameter.master_username.value
+#   master_password         = data.aws_ssm_parameter.master_password.value
+#   instance_count          = each.value["instance_count"]
+#   instance_class          = each.value["instance_class"]
+# }
 
-  for_each                = var.docdb
-  env                     = var.env
-  tags                    = var.tags
-  db_subnets              = local.db_subnets
-  app_subnets_cidr        = local.app_subnets_cidr
-  engine_family           = each.value["engine_family"]
-  vpc_id                  = local.main_vpc_id
-  backup_retention_period = each.value["backup_retention_period"]
-  preferred_backup_window = each.value["preferred_backup_window"]
-  skip_final_snapshot     = each.value["skip_final_snapshot"]
-  engine_version          = each.value["engine_version"]
-  master_username         = data.aws_ssm_parameter.master_username.value
-  master_password         = data.aws_ssm_parameter.master_password.value
-  instance_count          = each.value["instance_count"]
-  instance_class          = each.value["instance_class"]
+# Deploy the Aurora SQL DB.
+module "aurora" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-aurorasql.git"
+
+  for_each         = var.aurora
+  env              = var.env
+  tags             = var.tags
+  app_subnets_cidr = local.app_subnets_cidr
+  vpc_id           = local.main_vpc_id
+  db_subnets       = local.db_subnets
+  rds_type         = each.value["rds_type"]
+  engine_family    = each.value["engine_family"]
+  port             = each.value["port"]
+
+
 }
-
