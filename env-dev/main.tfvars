@@ -55,7 +55,7 @@ docdb = {
     engine_version          = "4.0.0"
     master_username         = "foo"
     master_password         = "mustbeeightchars"
-    backup_retention_period = 0
+    backup_retention_period = 1
     preferred_backup_window = "07:00-09:00"
     skip_final_snapshot     = true
   }
