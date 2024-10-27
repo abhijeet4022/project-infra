@@ -50,7 +50,9 @@ alb = {
 }
 
 docdb = {
-  engine_family = "docdb4.0"
+  main = {
+    engine_family = "docdb4.0"
+  }
 }
 
 
