@@ -78,38 +78,38 @@ module "vpc" {
 
 
 # Deploy Redis Elasticache.
-module "elasticache" {
-  source = "git::https://github.com/abhijeet4022/terraform-aws-elasticache.git"
-
-  for_each         = var.elasticache
-  env              = var.env
-  tags             = var.tags
-  db_subnets       = local.db_subnets
-  vpc_id           = local.main_vpc_id
-  app_subnets_cidr = local.app_subnets_cidr
-  elasticache_type = each.value["elasticache_type"]
-  engine_family    = each.value["engine_family"]
-  port             = each.value["port"]
-  engine           = each.value["engine"]
-  node_type        = each.value["node_type"]
-  num_cache_nodes  = each.value["num_cache_nodes"]
-  engine_version   = each.value["engine_version"]
-}
+# module "elasticache" {
+#   source = "git::https://github.com/abhijeet4022/terraform-aws-elasticache.git"
+#
+#   for_each         = var.elasticache
+#   env              = var.env
+#   tags             = var.tags
+#   db_subnets       = local.db_subnets
+#   vpc_id           = local.main_vpc_id
+#   app_subnets_cidr = local.app_subnets_cidr
+#   elasticache_type = each.value["elasticache_type"]
+#   engine_family    = each.value["engine_family"]
+#   port             = each.value["port"]
+#   engine           = each.value["engine"]
+#   node_type        = each.value["node_type"]
+#   num_cache_nodes  = each.value["num_cache_nodes"]
+#   engine_version   = each.value["engine_version"]
+# }
 
 
 # Deploy RabbitMQ
-module "rabbitmq" {
-  source = "git::https://github.com/abhijeet4022/terraform-aws-rabbitmq.git"
-
-  for_each         = var.rabbitmq
-  tags             = var.tags
-  env              = var.env
-  zone_id          = var.zone_id
-  vpc_id           = local.main_vpc_id
-  ssh_subnets_cidr = var.ssh_subnets_cidr
-  app_subnets_cidr = local.app_subnets_cidr
-  db_subnets       = local.db_subnets
-  ami_id           = data.aws_ami.ami.id
-  instance_type    = each.value["instance_type"]
-}
+# module "rabbitmq" {
+#   source = "git::https://github.com/abhijeet4022/terraform-aws-rabbitmq.git"
+#
+#   for_each         = var.rabbitmq
+#   tags             = var.tags
+#   env              = var.env
+#   zone_id          = var.zone_id
+#   vpc_id           = local.main_vpc_id
+#   ssh_subnets_cidr = var.ssh_subnets_cidr
+#   app_subnets_cidr = local.app_subnets_cidr
+#   db_subnets       = local.db_subnets
+#   ami_id           = data.aws_ami.ami.id
+#   instance_type    = each.value["instance_type"]
+# }
 
