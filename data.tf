@@ -6,6 +6,13 @@ data "aws_subnets" "subnets" {
   }
 }
 
+# Fetch the ami id
+data "aws_ami" "ami" {
+  most_recent = true
+  name_regex  = "Centos-8-DevOps-Practice"
+  owners      = [973714476881]
+}
+
 # Find the parameter store values for DocDB
 data "aws_ssm_parameter" "docdb_master_username" {
   name = "docdb.${var.env}.master_username"
