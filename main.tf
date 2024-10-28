@@ -105,7 +105,7 @@ module "rabbitmq" {
   tags             = var.tags
   env              = var.env
   zone_id          = var.zone_id
-  vpc_id           = var.default_vpc_id
+  vpc_id           = local.main_vpc_id
   ssh_subnets_cidr = var.ssh_subnets_cidr
   app_subnets_cidr = local.app_subnets_cidr
   db_subnets       = local.db_subnets
