@@ -95,3 +95,21 @@ module "elasticache" {
   num_cache_nodes  = each.value["num_cache_nodes"]
   engine_version   = each.value["engine_version"]
 }
+
+
+# Deploy RabbitMQ
+module "rabbitmq" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-rabbitmq.git"
+
+  for_each         = var.rabbitmq
+  tags             = var.tags
+  env              = var.env
+  zone_id          = var.zone_id
+  vpc_id           = var.default_vpc_id
+  ssh_subnets_cidr = var.ssh_subnets_cidr
+  app_subnets_cidr = local.app_subnets_cidr
+  db_subnets       = local.db_subnets
+  ami_id           = data.aws_ami.ami.id
+  instance_type    = each.value["instance_type"]
+}
+

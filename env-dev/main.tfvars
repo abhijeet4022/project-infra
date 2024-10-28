@@ -2,6 +2,8 @@ default_vpc_id    = "vpc-058c10b399cde9466"
 default_vpc_cidr  = "172.31.0.0/16"
 default_vpc_rt_id = "rtb-04de4de8427d67968"
 env               = "dev"
+ssh_subnets_cidr  = ["172.31.47.33"]
+zone_id           = "Z03000202RXSEVOPTHMK1"
 
 
 vpc = {
@@ -85,5 +87,11 @@ elasticache = {
     node_type        = "cache.t3.micro"
     num_cache_nodes  = 1
     engine_version   = "6.2"
+  }
+}
+
+rabbitmq = {
+  main = {
+    instance_type = "t2.micro"
   }
 }

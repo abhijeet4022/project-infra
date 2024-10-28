@@ -20,3 +20,15 @@ variable "aurora" {
 variable "elasticache" {
   description = "Redis Elasticache Config"
 }
+
+# RabbitMQ Variables
+variable "rabbitmq" {
+  description = "RabbitMQ Config"
+}
+
+variable "ssh_subnets_cidr" {
+  description = "Jupmhost IP"
+}
+variable "zone_id" {
+  default = "Domain Zone ID"
+}
