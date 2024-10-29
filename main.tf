@@ -38,10 +38,13 @@ module "app" {
   env              = var.env
   ssh_subnets_cidr = var.ssh_subnets_cidr
 
-  for_each      = var.app
-  app_port      = each.value["app_port"]
-  component     = each.key
-  instance_type = each.value["instance_type"]
+  for_each         = var.app
+  app_port         = each.value["app_port"]
+  component        = each.key
+  instance_type    = each.value["instance_type"]
+  max_size         = each.value["max_size"]
+  min_size         = each.value["min_size"]
+  desired_capacity = each.value["desired_capacity"]
 
   vpc_id           = local.main_vpc_id
   app_subnets_cidr = local.app_subnets_cidr

@@ -53,28 +53,46 @@ alb = {
 
 app = {
   frontend = {
-    app_port = 80
-    instance_type = "t2.micro"
+    app_port         = 80
+    instance_type    = "t2.micro"
+    max_size         = 2
+    min_size         = 1
+    desired_capacity = 1
   }
   catalogue = {
-    app_port = 8080
-    instance_type = "t2.micro"
+    app_port         = 8080
+    instance_type    = "t2.micro"
+    max_size         = 2
+    min_size         = 1
+    desired_capacity = 1
   }
   user = {
-    app_port = 8080
-    instance_type = "t2.micro"
+    app_port         = 8080
+    instance_type    = "t2.micro"
+    max_size         = 2
+    min_size         = 1
+    desired_capacity = 1
   }
   cart = {
-    app_port = 8080
-    instance_type = "t2.micro"
+    app_port         = 8080
+    instance_type    = "t2.micro"
+    max_size         = 2
+    min_size         = 1
+    desired_capacity = 1
   }
   shipping = {
-    app_port = 8080
-    instance_type = "t2.micro"
+    app_port         = 8080
+    instance_type    = "t2.micro"
+    max_size         = 2
+    min_size         = 1
+    desired_capacity = 1
   }
   payment = {
-    app_port = 8080
-    instance_type = "t2.micro"
+    app_port         = 8080
+    instance_type    = "t2.micro"
+    max_size         = 2
+    min_size         = 1
+    desired_capacity = 1
   }
 }
 
