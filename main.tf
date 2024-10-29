@@ -38,17 +38,16 @@ module "app" {
   env              = var.env
   ssh_subnets_cidr = var.ssh_subnets_cidr
 
-  for_each  = var.app
-  app_port  = each.value["app_port"]
-  component = each.key
-
+  for_each      = var.app
+  app_port      = each.value["app_port"]
+  component     = each.key
+  instance_type = each.value["instance_type"]
 
   vpc_id           = local.main_vpc_id
   app_subnets_cidr = local.app_subnets_cidr
+  image_id         = data.aws_ami.ami.id
 
 }
-
-
 
 
 # Deploy the DocumentDB.

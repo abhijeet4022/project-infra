@@ -54,21 +54,27 @@ alb = {
 app = {
   frontend = {
     app_port = 80
+    instance_type = "t2.micro"
   }
   catalogue = {
     app_port = 8080
+    instance_type = "t2.micro"
   }
   user = {
     app_port = 8080
+    instance_type = "t2.micro"
   }
   cart = {
     app_port = 8080
+    instance_type = "t2.micro"
   }
   shipping = {
     app_port = 8080
+    instance_type = "t2.micro"
   }
   payment = {
     app_port = 8080
+    instance_type = "t2.micro"
   }
 }
 
