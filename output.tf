@@ -11,5 +11,5 @@
 # }
 
 output "arn" {
-  value = lookup(lookup(lookup(module.alb, "private", null), "listener", null), "arn", null)
+  value = lookup(module.alb, "private", null)
 }
