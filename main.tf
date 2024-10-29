@@ -45,11 +45,13 @@ module "app" {
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   desired_capacity = each.value["desired_capacity"]
+  lb_priority      = each.value["lb_priority"]
 
-  vpc_id           = local.main_vpc_id
-  app_subnets_cidr = local.app_subnets_cidr
-  app_subnets      = local.app_subnets
-  image_id         = data.aws_ami.ami.id
+  vpc_id               = local.main_vpc_id
+  app_subnets_cidr     = local.app_subnets_cidr
+  app_subnets          = local.app_subnets
+  private_listener_arn = local.private_listener_arn
+  image_id             = data.aws_ami.ami.id
 
 }
 

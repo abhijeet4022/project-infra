@@ -58,6 +58,7 @@ app = {
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
+    lb_priority      = 1
   }
   catalogue = {
     app_port         = 8080
@@ -65,6 +66,7 @@ app = {
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
+    lb_priority      = 2
   }
   user = {
     app_port         = 8080
@@ -72,6 +74,7 @@ app = {
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
+    lb_priority      = 3
   }
   cart = {
     app_port         = 8080
@@ -79,6 +82,7 @@ app = {
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
+    lb_priority      = 4
   }
   shipping = {
     app_port         = 8080
@@ -86,6 +90,7 @@ app = {
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
+    lb_priority      = 5
   }
   payment = {
     app_port         = 8080
@@ -93,6 +98,7 @@ app = {
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
+    lb_priority      = 6
   }
 }
 
