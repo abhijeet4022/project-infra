@@ -11,9 +11,10 @@
 # }
 
 output "private_listener_arn" {
-  value = lookup(module.alb, "internal", null)
+  value = lookup(lookup(lookup(module.alb, "internal", null), "listener", null), "arn", null)
 }
 
+
 output "public_listener_arn" {
-  value = lookup(module.alb, "public", null)
+  value = lookup(lookup(lookup(module.alb, "public", null), "listener", null), "arn", null)
 }
