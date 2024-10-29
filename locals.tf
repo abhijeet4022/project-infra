@@ -7,7 +7,7 @@ locals {
   # CIDR Block
   app_subnets_cidr = [for k, v in lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "app", null), "subnet_ids", null) : v.cidr_block]
 
-  private_listener_arn = lookup(lookup(lookup(module.alb, "private", null), "listener", null), "arn", null)
+
 
 }
 
