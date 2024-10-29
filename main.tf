@@ -38,8 +38,9 @@ module "app" {
   env              = var.env
   ssh_subnets_cidr = var.ssh_subnets_cidr
 
-  for_each = var.app
-  app_port = each.value["app_port"]
+  for_each  = var.app
+  app_port  = each.value["app_port"]
+  component = each.key
 
 
   vpc_id           = local.main_vpc_id
