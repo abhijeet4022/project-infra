@@ -51,6 +51,33 @@ alb = {
   }
 }
 
+app = {
+  frontend = {
+    app_port = 80
+  }
+  catalogue = {
+    app_port = 8080
+  }
+  user = {
+    app_port = 8080
+  }
+  cart = {
+    app_port = 8080
+  }
+  shipping = {
+    app_port = 8080
+  }
+  payment = {
+    app_port = 8080
+  }
+}
+
+
+
+
+
+
+
 docdb = {
   main = {
     engine_family           = "docdb4.0"

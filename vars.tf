@@ -32,3 +32,8 @@ variable "ssh_subnets_cidr" {
 variable "zone_id" {
   default = "Domain Zone ID"
 }
+
+# ASG Module
+variable "app" {
+  default = "Application ASG module"
+}

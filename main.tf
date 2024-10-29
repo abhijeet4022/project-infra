@@ -30,6 +30,26 @@ module "alb" {
 }
 
 
+# Deploy the Application ASG.
+module "app" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-app.git"
+
+  tags             = var.tags
+  env              = var.env
+  ssh_subnets_cidr = var.ssh_subnets_cidr
+
+  for_each = var.app
+  app_port = each.value["app_port"]
+
+
+  vpc_id           = local.main_vpc_id
+  app_subnets_cidr = local.app_subnets_cidr
+
+}
+
+
+
+
 # Deploy the DocumentDB.
 # module "docdb" {
 #   source = "git::https://github.com/abhijeet4022/terraform-aws-docdb.git"
