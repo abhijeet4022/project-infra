@@ -2,15 +2,17 @@
 module "vpc" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-vpc.git"
 
-  for_each          = var.vpc
   tags              = var.tags
   env               = var.env
-  cidr_block        = each.value["cidr_block"]
-  subnets           = each.value["subnets"]
-  vpc_name          = each.key
   default_vpc_id    = var.default_vpc_id
   default_vpc_cidr  = var.default_vpc_cidr
   default_vpc_rt_id = var.default_vpc_rt_id
+
+  for_each   = var.vpc
+  cidr_block = each.value["cidr_block"]
+  subnets    = each.value["subnets"]
+  vpc_name   = each.key
+
 }
 
 
@@ -18,9 +20,10 @@ module "vpc" {
 module "alb" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-alb.git"
 
+  tags = var.tags
+  env  = var.env
+
   for_each           = var.alb
-  tags               = var.tags
-  env                = var.env
   internal           = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
   vpc_id             = each.value["internal"] ? local.main_vpc_id : var.default_vpc_id
