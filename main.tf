@@ -53,6 +53,7 @@ module "app" {
   app_subnets          = local.app_subnets
   private_listener_arn = local.private_listener_arn
   private_alb_dns_name = local.private_alb_dns_name
+  public_alb_dns_name  = local.public_alb_dns_name
   image_id             = data.aws_ami.ami.id
 
 }
