@@ -52,14 +52,15 @@ module "app" {
   desired_capacity = each.value["desired_capacity"]
   lb_priority      = each.value["lb_priority"]
 
-  vpc_id               = local.main_vpc_id
-  app_subnets_cidr     = local.app_subnets_cidr
-  app_subnets          = local.app_subnets
-  private_listener_arn = local.private_listener_arn
-  private_alb_dns_name = local.private_alb_dns_name
-  public_alb_dns_name  = local.public_alb_dns_name
+  vpc_id                 = local.main_vpc_id
+  app_subnets_cidr       = local.app_subnets_cidr
+  app_subnets            = local.app_subnets
+  private_listener_arn   = local.private_listener_arn
+  private_alb_dns_name   = local.private_alb_dns_name
+  public_alb_dns_name    = local.public_alb_dns_name
   private_alb_ip_address = local.private_alb_ip_address
-  image_id             = data.aws_ami.ami.id
+  public_listener_arn    = local.public_listener_arn
+  image_id               = data.aws_ami.ami.id
 }
 
 
