@@ -38,6 +38,7 @@ module "app" {
   env              = var.env
   ssh_subnets_cidr = var.ssh_subnets_cidr
   zone_id          = var.zone_id
+  default_vpc_id   = var.default_vpc_id
 
   for_each         = var.app
   app_port         = each.value["app_port"]
@@ -55,7 +56,6 @@ module "app" {
   private_alb_dns_name = local.private_alb_dns_name
   public_alb_dns_name  = local.public_alb_dns_name
   image_id             = data.aws_ami.ami.id
-
 }
 
 
