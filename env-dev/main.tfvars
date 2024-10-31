@@ -95,7 +95,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 5
-    parameters       = []
+    parameters       = ["rds"]
   }
   payment = {
     app_port         = 8080
@@ -104,7 +104,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 6
-    parameters       = []
+    parameters       = ["rabbitmq"]
   }
 }
 
