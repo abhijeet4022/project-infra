@@ -51,6 +51,7 @@ module "app" {
   min_size         = each.value["min_size"]
   desired_capacity = each.value["desired_capacity"]
   lb_priority      = each.value["lb_priority"]
+  parameters       = each.value["parameters"]
 
   vpc_id                 = local.main_vpc_id
   app_subnets_cidr       = local.app_subnets_cidr
