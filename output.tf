@@ -20,6 +20,6 @@
 #   value = lookup(lookup(lookup(module.alb, "public", null), "listener", null), "arn", null)
 # }
 
-output "LB_IP" {
-  value = data.dns_a_record_set.main.addrs
-}
+# output "LB_IP" {
+#   value = data.dns_a_record_set.main.addrs
+# }
