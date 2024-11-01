@@ -4,7 +4,7 @@ default_vpc_rt_id      = "rtb-04de4de8427d67968"
 env                    = "dev"
 ssh_subnets_cidr       = ["172.31.47.33/32"]
 zone_id                = "Z03000202RXSEVOPTHMK1"
-prometheus_server_cidr = "10.0.0.10/32"
+prometheus_server_cidr = "172.31.37.37/32"
 
 
 vpc = {
