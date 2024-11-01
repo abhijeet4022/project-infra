@@ -37,3 +37,8 @@ variable "zone_id" {
 variable "app" {
   default = "Application ASG module"
 }
+
+# Monitoring
+variable "prometheus_server_cidr" {
+  description = "Provide the prometheus server CIDR"
+}

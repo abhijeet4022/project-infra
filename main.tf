@@ -37,11 +37,13 @@ module "alb" {
 module "app" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-app.git"
 
-  tags             = var.tags
-  env              = var.env
-  ssh_subnets_cidr = var.ssh_subnets_cidr
-  zone_id          = var.zone_id
-  default_vpc_id   = var.default_vpc_id
+  tags                   = var.tags
+  env                    = var.env
+  ssh_subnets_cidr       = var.ssh_subnets_cidr
+  zone_id                = var.zone_id
+  default_vpc_id         = var.default_vpc_id
+  prometheus_server_cidr = var.prometheus_server_cidr
+
 
   for_each         = var.app
   app_port         = each.value["app_port"]
