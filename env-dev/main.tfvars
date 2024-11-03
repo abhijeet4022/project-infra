@@ -61,6 +61,7 @@ app = {
     desired_capacity = 1
     lb_priority      = 1
     parameters       = []
+    tags             = { Monitor_Nginx = "yes" }
   }
   catalogue = {
     app_port         = 8080
@@ -70,6 +71,7 @@ app = {
     desired_capacity = 1
     lb_priority      = 2
     parameters       = ["docdb"]
+    tags             = {}
   }
   user = {
     app_port         = 8080
@@ -79,6 +81,7 @@ app = {
     desired_capacity = 1
     lb_priority      = 3
     parameters       = ["docdb"]
+    tags             = {}
   }
   cart = {
     app_port         = 8080
@@ -88,6 +91,7 @@ app = {
     desired_capacity = 1
     lb_priority      = 4
     parameters       = []
+    tags             = {}
   }
   shipping = {
     app_port         = 8080
@@ -97,6 +101,7 @@ app = {
     desired_capacity = 1
     lb_priority      = 5
     parameters       = ["rds"]
+    tags             = {}
   }
   payment = {
     app_port         = 8080
@@ -106,6 +111,7 @@ app = {
     desired_capacity = 1
     lb_priority      = 6
     parameters       = ["rabbitmq"]
+    tags             = {}
   }
 }
 

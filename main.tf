@@ -37,7 +37,7 @@ module "alb" {
 module "app" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-app.git"
 
-  tags                   = var.tags
+  tags                   = merge(var.tags, each.value["tags"])
   env                    = var.env
   ssh_subnets_cidr       = var.ssh_subnets_cidr
   zone_id                = var.zone_id
@@ -64,8 +64,8 @@ module "app" {
   private_alb_ip_address = local.private_alb_ip_address
   public_listener_arn    = local.public_listener_arn
 
-  image_id   = data.aws_ami.ami.id
-#  depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
+  image_id = data.aws_ami.ami.id
+  #  depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
 }
 
 
