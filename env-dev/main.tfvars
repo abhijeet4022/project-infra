@@ -55,7 +55,7 @@ alb = {
 app = {
   frontend = {
     app_port         = 80
-    instance_type    = "t2.micro"
+    instance_type    = "t2.small"
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
@@ -65,7 +65,7 @@ app = {
   }
   catalogue = {
     app_port         = 8080
-    instance_type    = "t2.micro"
+    instance_type    = "t2.small"
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
@@ -75,7 +75,7 @@ app = {
   }
   user = {
     app_port         = 8080
-    instance_type    = "t2.micro"
+    instance_type    = "t2.small"
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
@@ -85,7 +85,7 @@ app = {
   }
   cart = {
     app_port         = 8080
-    instance_type    = "t2.micro"
+    instance_type    = "t2.small"
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
@@ -105,7 +105,7 @@ app = {
   }
   payment = {
     app_port         = 8080
-    instance_type    = "t2.micro"
+    instance_type    = "t2.small"
     max_size         = 2
     min_size         = 1
     desired_capacity = 1
