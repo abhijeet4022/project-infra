@@ -166,19 +166,3 @@ module "app" {
 #  ami_id           = data.aws_ami.ami.id
 #}
 #
-
-
-# This resource creates an AWS EC2 instance for all components with CentOS 8.
-resource "aws_instance" "test" {
-  ami           = data.aws_ami.ami.id
-  instance_type = "t2.small"
-
-
-  ebs_block_device {
-    device_name           = "/dev/sda1"
-    volume_size           = 20
-    delete_on_termination = true
-    tags                  = { Name = "os-disk" }
-  }
-
-}
