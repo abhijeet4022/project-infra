@@ -176,7 +176,7 @@ resource "aws_instance" "test" {
 
   ebs_block_device {
     device_name           = "/dev/sda1"
-    volume_size           = 10
+    volume_size           = 20
     delete_on_termination = true
     tags                  = { Name = "os-disk" }
   }
