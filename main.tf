@@ -172,6 +172,7 @@ module "app" {
 resource "aws_instance" "test" {
   ami                    = data.aws_ami.ami.id
   instance_type          = "t2.small"
+  tags = {Name = test}
 
   ebs_block_device {
     device_name           = "/dev/sda1"
