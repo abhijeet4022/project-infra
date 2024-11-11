@@ -65,7 +65,7 @@ module "app" {
   public_listener_arn    = local.public_listener_arn
 
   image_id = data.aws_ami.ami.id
-#  depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
+  #  depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
 }
 
 #
@@ -170,9 +170,9 @@ module "app" {
 
 # This resource creates an AWS EC2 instance for all components with CentOS 8.
 resource "aws_instance" "test" {
-  ami                    = data.aws_ami.ami.id
-  instance_type          = "t2.small"
-  tags = {Name = test}
+  ami           = data.aws_ami.ami.id
+  instance_type = "t2.small"
+
 
   ebs_block_device {
     device_name           = "/dev/sda1"
