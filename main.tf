@@ -65,7 +65,7 @@ module "app" {
   public_listener_arn    = local.public_listener_arn
 
   image_id = data.aws_ami.ami.id
-  depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
+  #depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
 }
 
 
