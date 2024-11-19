@@ -60,7 +60,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 1
-    parameters       = []
+    parameters       = ["nexus"]
     tags             = { Monitor_Nginx = "yes" }
   }
   catalogue = {
@@ -70,7 +70,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 2
-    parameters       = ["docdb"]
+    parameters       = ["docdb", "nexus"]
     tags             = {}
   }
   user = {
@@ -80,7 +80,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 3
-    parameters       = ["docdb"]
+    parameters       = ["docdb", "nexus"]
     tags             = {}
   }
   cart = {
@@ -90,7 +90,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 4
-    parameters       = []
+    parameters       = ["nexus"]
     tags             = {}
   }
   shipping = {
@@ -100,7 +100,7 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 5
-    parameters       = ["rds"]
+    parameters       = ["rds", "nexus"]
     tags             = {}
   }
   payment = {
@@ -110,15 +110,10 @@ app = {
     min_size         = 1
     desired_capacity = 1
     lb_priority      = 6
-    parameters       = ["rabbitmq"]
+    parameters       = ["rabbitmq", "nexus"]
     tags             = {}
   }
 }
-
-
-
-
-
 
 
 docdb = {
