@@ -44,7 +44,6 @@ module "app" {
   zone_id                = var.zone_id
   default_vpc_id         = var.default_vpc_id
   prometheus_server_cidr = var.prometheus_server_cidr
-  kms_key_id             = var.kms_key_id
 
   for_each         = var.app
   app_port         = each.value["app_port"]
