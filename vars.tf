@@ -42,3 +42,9 @@ variable "app" {
 variable "prometheus_server_cidr" {
   description = "Provide the prometheus server CIDR"
 }
+
+
+# Encryption
+variable "kms_key_id" {
+  description = "Provide the KMS ARN"
+}
