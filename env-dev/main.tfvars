@@ -5,6 +5,7 @@ env                    = "dev"
 ssh_subnets_cidr       = ["172.31.47.33/32"]
 zone_id                = "Z03000202RXSEVOPTHMK1"
 prometheus_server_cidr = "172.31.37.37/32"
+acm                    = "arn:aws:acm:us-east-1:060795929502:certificate/4606ffc2-447b-4619-91b1-5f541b9a66d6"
 kms_key_id             = "arn:aws:kms:us-east-1:060795929502:key/44d09148-0677-4a8b-a183-cd2a9b03b2eb"
 
 vpc = {

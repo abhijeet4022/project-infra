@@ -9,6 +9,10 @@ variable "alb" {
   description = "A configuration map for the ALB (Application Load Balancer) module, containing details such as type, subnets, security group, and CIDR blocks for allowed traffic."
 }
 
+variable "acm" {
+  description = "Provide the certificate ARN"
+}
+
 variable "docdb" {
   description = "A configuration map for the DocumentDB module, including settings such as engine version, VPC details, and subnet groups for deployment."
 }
