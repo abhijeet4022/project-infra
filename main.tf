@@ -22,6 +22,7 @@ module "alb" {
 
   tags = var.tags
   env  = var.env
+  acm  = var.acm
 
   for_each           = var.alb
   internal           = each.value["internal"]
@@ -43,8 +44,6 @@ module "app" {
   zone_id                = var.zone_id
   default_vpc_id         = var.default_vpc_id
   prometheus_server_cidr = var.prometheus_server_cidr
-  acm                    = var.acm
-
 
   for_each         = var.app
   app_port         = each.value["app_port"]
