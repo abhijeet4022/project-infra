@@ -22,6 +22,7 @@ module "alb" {
 
   tags = var.tags
   env  = var.env
+  acm  = var.acm
 
   for_each           = var.alb
   internal           = each.value["internal"]

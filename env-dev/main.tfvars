@@ -5,12 +5,13 @@ env                    = "dev"
 ssh_subnets_cidr       = ["172.31.47.33/32"]
 zone_id                = "Z03000202RXSEVOPTHMK1"
 prometheus_server_cidr = "172.31.37.37/32"
+acm                    = "arn:aws:acm:us-east-1:060795929502:certificate/4606ffc2-447b-4619-91b1-5f541b9a66d6"
 
 
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
-    subnets = {
+    subnets    = {
       public = {
         public1 = { cidr = "10.0.0.0/24", az = "us-east-1a" }
         public2 = { cidr = "10.0.1.0/24", az = "us-east-1b" }
@@ -48,7 +49,7 @@ alb = {
     internal           = false
     load_balancer_type = "application"
     cidr_block         = ["0.0.0.0/0"]
-    sg_port            = 80
+    sg_port            = 443
   }
 }
 
