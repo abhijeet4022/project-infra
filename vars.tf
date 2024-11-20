@@ -5,12 +5,8 @@ variable "default_vpc_rt_id" {}
 variable "tags" {}
 variable "env" {}
 
-# Application LB.
 variable "alb" {
   description = "A configuration map for the ALB (Application Load Balancer) module, containing details such as type, subnets, security group, and CIDR blocks for allowed traffic."
-}
-variable "acm" {
-  description = "Provide the Certificate ARN"
 }
 
 variable "docdb" {
@@ -46,4 +42,3 @@ variable "app" {
 variable "prometheus_server_cidr" {
   description = "Provide the prometheus server CIDR"
 }
-
