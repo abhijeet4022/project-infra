@@ -49,7 +49,7 @@ alb = {
     internal           = false
     load_balancer_type = "application"
     cidr_block         = ["0.0.0.0/0"]
-    sg_port            = 80
+    sg_port            = 443
   }
 }
 
