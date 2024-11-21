@@ -44,6 +44,7 @@ module "app" {
   zone_id                = var.zone_id
   default_vpc_id         = var.default_vpc_id
   prometheus_server_cidr = var.prometheus_server_cidr
+  kms_key_id             = var.kms_key_id
 
   for_each         = var.app
   app_port         = each.value["app_port"]
@@ -167,4 +168,13 @@ module "rabbitmq" {
   app_subnets_cidr = local.app_subnets_cidr
   db_subnets       = local.db_subnets
   ami_id           = data.aws_ami.ami.id
+}
+
+
+resource "aws_instance" "load-runner" {
+  ami                    = data.aws_ami.ami.id
+  instance_type          = "t3.medium"
+  vpc_security_group_ids = ["sg-0243a82da6118ecb6"]
+  user_data              = file("${path.module}/load-runner.sh")
+  tags                   = { Name = "load-runner" }
 }
