@@ -6,11 +6,18 @@ data "aws_subnets" "subnets" {
   }
 }
 
-# Fetch the ami id
+# # Fetch the ami id
+# data "aws_ami" "ami" {
+#   most_recent = true
+#   name_regex  = "Centos-8-DevOps-Practice"
+#   owners      = [973714476881]
+# }
+
+# Fetch the own ami id
 data "aws_ami" "ami" {
   most_recent = true
-  name_regex  = "Centos-8-DevOps-Practice"
-  owners      = [973714476881]
+  name_regex  = "roboshop-ami-v1"
+  owners      = [060795929502]
 }
 
 # Find the parameter store values for DocDB
