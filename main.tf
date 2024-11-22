@@ -1,3 +1,10 @@
+# Create AMI for the project.
+# module "ami" {
+#   source = "git::https://github.com/abhijeet4022/terraform-aws-ami.git"
+#
+# }
+
+
 # Create the Infra Network
 module "vpc" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-vpc.git"
