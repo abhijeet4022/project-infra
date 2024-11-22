@@ -17,7 +17,7 @@ data "aws_subnets" "subnets" {
 data "aws_ami" "ami" {
   most_recent = true
   name_regex  = "roboshop-ami-v1"
-  owners      = [060795929502]
+  owners      = ["060795929502"]
 }
 
 # Find the parameter store values for DocDB
