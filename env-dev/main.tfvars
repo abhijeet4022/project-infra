@@ -96,7 +96,7 @@ app = {
   }
   shipping = {
     app_port         = 8080
-    instance_type    = "t2.small"
+    instance_type    = "t3.xlarge"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
