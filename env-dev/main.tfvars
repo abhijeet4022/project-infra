@@ -56,7 +56,7 @@ alb = {
 app = {
   frontend = {
     app_port         = 80
-    instance_type    = "t2.small"
+    instance_type    = "t3.small"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
@@ -66,7 +66,7 @@ app = {
   }
   catalogue = {
     app_port         = 8080
-    instance_type    = "t2.small"
+    instance_type    = "t3.small"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
@@ -76,7 +76,7 @@ app = {
   }
   user = {
     app_port         = 8080
-    instance_type    = "t2.small"
+    instance_type    = "t3.small"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
@@ -86,7 +86,7 @@ app = {
   }
   cart = {
     app_port         = 8080
-    instance_type    = "t2.small"
+    instance_type    = "t3.small"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
@@ -96,7 +96,7 @@ app = {
   }
   shipping = {
     app_port         = 8080
-    instance_type    = "t3.xlarge"
+    instance_type    = "t3.small"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
@@ -106,7 +106,7 @@ app = {
   }
   payment = {
     app_port         = 8080
-    instance_type    = "t2.small"
+    instance_type    = "t3.small"
     max_size         = 5
     min_size         = 2
     desired_capacity = 2
@@ -158,6 +158,6 @@ elasticache = {
 
 rabbitmq = {
   main = {
-    instance_type = "t2.micro"
+    instance_type = "t3.micro"
   }
 }
