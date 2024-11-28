@@ -11,6 +11,7 @@ pipeline {
 
     parameters {
         string(name: 'ENV', defaultValue: 'dev', description: 'Specify the target environment for deployment.')
+        choice(name: 'ACTION', choices: ['create', 'destroy'], description: 'Choose whether to create or destroy infrastructure.')
     }
 
     environment {
@@ -26,9 +27,17 @@ pipeline {
             }
         }
 
-        stage('Terraform Apply') {
+        stage('Terraform Action') {
             steps {
-                sh "make ${params.ENV}"
+                script {
+                    if (params.ACTION == 'create') {
+                        sh "make ${params.ENV}"
+                    } else if (params.ACTION == 'destroy') {
+                        sh "make ${params.ENV}-destroy"
+                    } else {
+                        error("Invalid ACTION parameter: ${params.ACTION}")
+                    }
+                }
             }
         }
     }
