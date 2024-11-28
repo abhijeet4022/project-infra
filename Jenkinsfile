@@ -29,6 +29,8 @@ pipeline {
         stage('Terraform Apply') {
             steps {
 //                 sh "make ${params.ENV}"
+                    sh 'ls -A'
+                    sh 'pwd'
                     sh 'git status'
             }
         }
