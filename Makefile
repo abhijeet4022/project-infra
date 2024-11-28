@@ -1,3 +1,5 @@
+default:
+	echo "No Action"
 dev:
 	rm -rf .terraform
 	git pull
