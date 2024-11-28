@@ -21,17 +21,14 @@ pipeline {
         stage('Set Build Badge') {
             steps {
                 script {
-                    currentBuild.description = "<img src='https://img.shields.io/badge/${BADGE_NAME}-InProgress-blue' alt='Build Badge'/>"
+                    currentBuild.description = "${BADGE_NAME}: In Progress 🔵"
                 }
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                 sh "make ${params.ENV}"
-//                     sh 'ls -A'
-//                     sh 'pwd'
-//                     sh 'git status'
+                sh "make ${params.ENV}"
             }
         }
     }
@@ -39,12 +36,12 @@ pipeline {
     post {
         success {
             script {
-                currentBuild.description = "<img src='https://img.shields.io/badge/${BADGE_NAME}-Success-green' alt='Build Badge'/>"
+                currentBuild.description = "${BADGE_NAME}: Success ✅"
             }
         }
         failure {
             script {
-                currentBuild.description = "<img src='https://img.shields.io/badge/${BADGE_NAME}-Failed-red' alt='Build Badge'/>"
+                currentBuild.description = "${BADGE_NAME}: Failed ❌"
             }
         }
         always {
