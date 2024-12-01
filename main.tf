@@ -192,7 +192,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.0"
 
-  cluster_name    = "prod-roboshop"
+  cluster_name    = "dev-roboshop"
   cluster_version = "1.28"
 
   cluster_endpoint_public_access = false
@@ -210,8 +210,8 @@ module "eks" {
   }
 
   vpc_id                   = local.main_vpc_id
-  subnet_ids               = local.app_subnets_cidr
-  control_plane_subnet_ids = local.app_subnets_cidr
+  subnet_ids               = local.app_subnets
+  control_plane_subnet_ids = local.app_subnets
 
 
   eks_managed_node_groups = {
