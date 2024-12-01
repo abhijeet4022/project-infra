@@ -189,14 +189,11 @@ module "rabbitmq" {
 
 # Deploy EKS
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.0"
-
-  cluster_name    = "dev-roboshop"
-  cluster_version = "1.29"
-
+  source                         = "terraform-aws-modules/eks/aws"
+  version                        = "~> 19.0"
+  cluster_name                   = "dev-roboshop"
+  cluster_version                = "1.29"
   cluster_endpoint_public_access = false
-
   cluster_addons = {
     coredns = {
       most_recent = true
@@ -212,8 +209,6 @@ module "eks" {
   vpc_id                   = local.main_vpc_id
   subnet_ids               = local.app_subnets
   control_plane_subnet_ids = local.app_subnets
-
-
   eks_managed_node_groups = {
     blue = {}
     green = {
