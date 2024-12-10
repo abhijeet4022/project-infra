@@ -158,25 +158,25 @@ module "elasticache" {
 }
 
 
-# # Deploy RabbitMQ
-# module "rabbitmq" {
-#   source = "git::https://github.com/abhijeet4022/terraform-aws-rabbitmq.git"
-#
-#   tags             = var.tags
-#   env              = var.env
-#   zone_id          = var.zone_id
-#   ssh_subnets_cidr = var.ssh_subnets_cidr
-#   kms_key_id       = var.kms_key_id
-#
-#   for_each      = var.rabbitmq
-#   instance_type = each.value["instance_type"]
-#
-#   vpc_id           = local.main_vpc_id
-#   app_subnets_cidr = local.app_subnets_cidr
-#   db_subnets       = local.db_subnets
-#   ami_id           = data.aws_ami.ami.id
-# }
-#
+# Deploy RabbitMQ
+module "rabbitmq" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-rabbitmq.git"
+
+  tags             = var.tags
+  env              = var.env
+  zone_id          = var.zone_id
+  ssh_subnets_cidr = var.ssh_subnets_cidr
+  kms_key_id       = var.kms_key_id
+
+  for_each      = var.rabbitmq
+  instance_type = each.value["instance_type"]
+
+  vpc_id           = local.main_vpc_id
+  app_subnets_cidr = local.app_subnets_cidr
+  db_subnets       = local.db_subnets
+  ami_id           = data.aws_ami.ami.id
+}
+
 #
 # # resource "aws_instance" "load-runner" {
 # #   ami                    = data.aws_ami.ami.id
