@@ -177,100 +177,100 @@ module "rabbitmq" {
   ami_id           = data.aws_ami.ami.id
 }
 
-#
-# # resource "aws_instance" "load-runner" {
-# #   ami                    = data.aws_ami.ami.id
-# #   instance_type          = "t3.medium"
-# #   vpc_security_group_ids = ["sg-0243a82da6118ecb6"]
-# #   user_data              = file("${path.module}/load-runner.sh")
-# #   tags                   = { Name = "load-runner" }
-# # }
-#
-#
-# # Deploy EKS
-# module "eks" {
-#   source                         = "terraform-aws-modules/eks/aws"
-#   version                        = "~> 19.0"
-#   cluster_name                   = "dev-roboshop"
-#   cluster_version                = "1.29"
-#   cluster_endpoint_public_access = false
-#   cluster_addons = {
-#     coredns = {
-#       most_recent = true
-#     }
-#     kube-proxy = {
-#       most_recent = true
-#     }
-#     vpc-cni = {
-#       most_recent = true
-#     }
-#   }
-#
-#   vpc_id                   = local.main_vpc_id
-#   subnet_ids               = local.app_subnets
-#   control_plane_subnet_ids = local.app_subnets
-#   eks_managed_node_groups = {
-#     blue = {}
-#     green = {
-#       min_size     = 1
-#       max_size     = 10
-#       desired_size = 2
-#
-#       instance_types = ["t2.medium"]
-#       capacity_type  = "SPOT"
-#     }
-#   }
-#
-#   tags = var.tags
+
+# resource "aws_instance" "load-runner" {
+#   ami                    = data.aws_ami.ami.id
+#   instance_type          = "t3.medium"
+#   vpc_security_group_ids = ["sg-0243a82da6118ecb6"]
+#   user_data              = file("${path.module}/load-runner.sh")
+#   tags                   = { Name = "load-runner" }
 # }
-#
-# # IAM PolicyFor EKS.
-# resource "aws_iam_role" "eks-ssm" {
-#   name = "EKS_PS_ACCESS_ROLE"
-#   assume_role_policy = jsonencode({
-#     "Version": "2012-10-17",
-#     "Statement": [
-#       {
-#         "Effect": "Allow",
-#         "Principal": {
-#           "Federated": "${module.eks.oidc_provider_arn}"
-#         },
-#         "Action": "sts:AssumeRoleWithWebIdentity",
-#         "Condition": {
-#           "StringEquals": {
-#             "${module.eks.oidc_provider}:aud" : "sts.amazonaws.com"
-#           }
-#         }
-#       }
-#     ]
-#   })
-#
-#   inline_policy {
-#     name = "${var.env}-eks-ssm-ro"
-#
-#     policy = jsonencode({
-#       "Version" : "2012-10-17",
-#       "Statement" : [
-#         {
-#           "Sid" : "VisualEditor0",
-#           "Effect" : "Allow",
-#           "Action" : [
-#             "kms:Decrypt",
-#             "ssm:GetParameterHistory",
-#             "ssm:GetParametersByPath",
-#             "ssm:GetParameters",
-#             "ssm:GetParameter"
-#           ],
-#           "Resource" : "*"
-#         },
-#         {
-#           "Sid" : "VisualEditor1",
-#           "Effect" : "Allow",
-#           "Action" : "ssm:DescribeParameters",
-#           "Resource" : "*"
-#         }
-#       ]
-#     })
-#   }
-#
-# }
+
+
+# Deploy EKS
+module "eks" {
+  source                         = "terraform-aws-modules/eks/aws"
+  version                        = "~> 19.0"
+  cluster_name                   = "dev-roboshop"
+  cluster_version                = "1.29"
+  cluster_endpoint_public_access = false
+  cluster_addons = {
+    coredns = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
+    vpc-cni = {
+      most_recent = true
+    }
+  }
+
+  vpc_id                   = local.main_vpc_id
+  subnet_ids               = local.app_subnets
+  control_plane_subnet_ids = local.app_subnets
+  eks_managed_node_groups = {
+    blue = {}
+    green = {
+      min_size     = 1
+      max_size     = 10
+      desired_size = 2
+
+      instance_types = ["t2.medium"]
+      capacity_type  = "SPOT"
+    }
+  }
+
+  tags = var.tags
+}
+
+# IAM PolicyFor EKS.
+resource "aws_iam_role" "eks-ssm" {
+  name = "EKS_PS_ACCESS_ROLE"
+  assume_role_policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Federated": "${module.eks.oidc_provider_arn}"
+        },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+          "StringEquals": {
+            "${module.eks.oidc_provider}:aud" : "sts.amazonaws.com"
+          }
+        }
+      }
+    ]
+  })
+
+  inline_policy {
+    name = "${var.env}-eks-ssm-ro"
+
+    policy = jsonencode({
+      "Version" : "2012-10-17",
+      "Statement" : [
+        {
+          "Sid" : "VisualEditor0",
+          "Effect" : "Allow",
+          "Action" : [
+            "kms:Decrypt",
+            "ssm:GetParameterHistory",
+            "ssm:GetParametersByPath",
+            "ssm:GetParameters",
+            "ssm:GetParameter"
+          ],
+          "Resource" : "*"
+        },
+        {
+          "Sid" : "VisualEditor1",
+          "Effect" : "Allow",
+          "Action" : "ssm:DescribeParameters",
+          "Resource" : "*"
+        }
+      ]
+    })
+  }
+
+}
