@@ -42,7 +42,7 @@ data "aws_ssm_parameter" "rds_master_password" {
   name = "rds.${var.env}.master_password"
 }
 
-# Find the IP address for Private LB.
-data "dns_a_record_set" "main" {
-  host = local.private_alb_dns_name
-}
+# # Find the IP address for Private LB.
+# data "dns_a_record_set" "main" {
+#   host = local.private_alb_dns_name
+# }
