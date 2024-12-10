@@ -1,12 +1,12 @@
-default_vpc_id         = "vpc-058c10b399cde9466"
+default_vpc_id         = "vpc-00cf4faf369528fd8"
 default_vpc_cidr       = "172.31.0.0/16"
-default_vpc_rt_id      = "rtb-04de4de8427d67968"
+default_vpc_rt_id      = "rtb-06918308622056007"
 env                    = "dev"
-ssh_subnets_cidr       = ["172.31.47.33/32"]
-zone_id                = "Z03000202RXSEVOPTHMK1"
-prometheus_server_cidr = "172.31.37.37/32"
-acm                    = "arn:aws:acm:us-east-1:060795929502:certificate/4606ffc2-447b-4619-91b1-5f541b9a66d6"
-kms_key_id             = "arn:aws:kms:us-east-1:060795929502:key/44d09148-0677-4a8b-a183-cd2a9b03b2eb"
+ssh_subnets_cidr       = ["172.31.22.36/32"]
+zone_id                = "Z0354643VPBIKRKXRUWT"
+prometheus_server_cidr = "172.31.93.31/32"
+acm                    = "arn:aws:acm:us-east-1:940482433230:certificate/bad592df-28f9-45c3-84c1-8ac48e7f9894"
+kms_key_id             = "arn:aws:kms:us-east-1:940482433230:key/ac63f4b2-595c-4455-8abb-ce8995a5ffcd"
 
 vpc = {
   main = {
