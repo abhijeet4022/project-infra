@@ -22,61 +22,61 @@ module "vpc" {
 
 }
 
+
+# Deploy the Application Load Balancer.
+module "alb" {
+  source = "git::https://github.com/abhijeet4022/terraform-aws-alb.git"
+
+  tags = var.tags
+  env  = var.env
+  acm  = var.acm
+
+  for_each           = var.alb
+  internal           = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+  vpc_id             = each.value["internal"] ? local.main_vpc_id : var.default_vpc_id
+  subnets            = each.value["internal"] ? local.app_subnets : local.public_subnets
+  cidr_block         = each.value["cidr_block"]
+  sg_port            = each.value["sg_port"]
+}
+
+
+# # Deploy the Application ASG.
+# module "app" {
+#   source = "git::https://github.com/abhijeet4022/terraform-aws-app.git"
 #
-# # Deploy the Application Load Balancer.
-# module "alb" {
-#   source = "git::https://github.com/abhijeet4022/terraform-aws-alb.git"
+#   tags                   = merge(var.tags, each.value["tags"])
+#   env                    = var.env
+#   ssh_subnets_cidr       = var.ssh_subnets_cidr
+#   zone_id                = var.zone_id
+#   default_vpc_id         = var.default_vpc_id
+#   prometheus_server_cidr = var.prometheus_server_cidr
+#   kms_key_id             = var.kms_key_id
 #
-#   tags = var.tags
-#   env  = var.env
-#   acm  = var.acm
+#   for_each         = var.app
+#   app_port         = each.value["app_port"]
+#   component        = each.key
+#   instance_type    = each.value["instance_type"]
+#   max_size         = each.value["max_size"]
+#   min_size         = each.value["min_size"]
+#   desired_capacity = each.value["desired_capacity"]
+#   lb_priority      = each.value["lb_priority"]
+#   parameters       = each.value["parameters"]
 #
-#   for_each           = var.alb
-#   internal           = each.value["internal"]
-#   load_balancer_type = each.value["load_balancer_type"]
-#   vpc_id             = each.value["internal"] ? local.main_vpc_id : var.default_vpc_id
-#   subnets            = each.value["internal"] ? local.app_subnets : local.public_subnets
-#   cidr_block         = each.value["cidr_block"]
-#   sg_port            = each.value["sg_port"]
+#   vpc_id                 = local.main_vpc_id
+#   app_subnets_cidr       = local.app_subnets_cidr
+#   app_subnets            = local.app_subnets
+#   private_listener_arn   = local.private_listener_arn
+#   private_alb_dns_name   = local.private_alb_dns_name
+#   public_alb_dns_name    = local.public_alb_dns_name
+#   private_alb_ip_address = local.private_alb_ip_address
+#   public_listener_arn    = local.public_listener_arn
+#
+#   image_id   = data.aws_ami.ami.id
+#   depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
 # }
-#
-#
-# # # Deploy the Application ASG.
-# # module "app" {
-# #   source = "git::https://github.com/abhijeet4022/terraform-aws-app.git"
-# #
-# #   tags                   = merge(var.tags, each.value["tags"])
-# #   env                    = var.env
-# #   ssh_subnets_cidr       = var.ssh_subnets_cidr
-# #   zone_id                = var.zone_id
-# #   default_vpc_id         = var.default_vpc_id
-# #   prometheus_server_cidr = var.prometheus_server_cidr
-# #   kms_key_id             = var.kms_key_id
-# #
-# #   for_each         = var.app
-# #   app_port         = each.value["app_port"]
-# #   component        = each.key
-# #   instance_type    = each.value["instance_type"]
-# #   max_size         = each.value["max_size"]
-# #   min_size         = each.value["min_size"]
-# #   desired_capacity = each.value["desired_capacity"]
-# #   lb_priority      = each.value["lb_priority"]
-# #   parameters       = each.value["parameters"]
-# #
-# #   vpc_id                 = local.main_vpc_id
-# #   app_subnets_cidr       = local.app_subnets_cidr
-# #   app_subnets            = local.app_subnets
-# #   private_listener_arn   = local.private_listener_arn
-# #   private_alb_dns_name   = local.private_alb_dns_name
-# #   public_alb_dns_name    = local.public_alb_dns_name
-# #   private_alb_ip_address = local.private_alb_ip_address
-# #   public_listener_arn    = local.public_listener_arn
-# #
-# #   image_id   = data.aws_ami.ami.id
-# #   depends_on = [module.alb, module.docdb, module.aurora, module.elasticache, module.rabbitmq]
-# # }
-#
-#
+
+
 # Deploy the DocumentDB.
 module "docdb" {
   source = "git::https://github.com/abhijeet4022/terraform-aws-docdb.git"
