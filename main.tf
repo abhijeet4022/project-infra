@@ -275,11 +275,3 @@ resource "aws_iam_role" "eks-ssm" {
   }
 
 }
-
-resource "aws_instance" "test" {
-    ami                    = data.aws_ami.ami.id
-    instance_type          = "t3.medium"
-    vpc_security_group_ids = ["sg-0243a82da6118ecb6"]
-    user_data              = file("${path.module}/load-runner.sh")
-    tags                   = { Name = "test-instance" }
-}
